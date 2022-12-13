@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/wallet-dapp/static/css/main.cbf08c40.css",
+    "main.js": "/wallet-dapp/static/js/main.7ef37c90.js",
+    "static/js/787.2f2eb8e0.chunk.js": "/wallet-dapp/static/js/787.2f2eb8e0.chunk.js",
+    "index.html": "/wallet-dapp/index.html",
+    "main.cbf08c40.css.map": "/wallet-dapp/static/css/main.cbf08c40.css.map",
+    "main.7ef37c90.js.map": "/wallet-dapp/static/js/main.7ef37c90.js.map",
+    "787.2f2eb8e0.chunk.js.map": "/wallet-dapp/static/js/787.2f2eb8e0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cbf08c40.css",
+    "static/js/main.7ef37c90.js"
+  ]
+}
