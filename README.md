@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# Wallet d'app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a react web app that connects to your MetaMask wallet and displays your account number and balance, using the Web3.js and react-Web3 libraries.
 
-## Available Scripts
+## general overview of the implementation steps
 
-In the project directory, you can run:
+- First, install the necessary dependencies by running the following command in your terminal:
 
-### `npm start`
+```terminal
+    yarn add web3 
+    yarn add @web3-react/core
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Next, import the Web3 and react-Web3 libraries in your React component:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```js
+    import Web3 from 'web3';
+    import { Web3ReactProvider } from '@web3-react/core';
+```
 
-### `npm test`
+- Create a function that returns a new instance of the Web3 library, and provide it with the provider of your MetaMask wallet:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```js
+    const getLibrary = (provider) => {
+      return new Web3(provider);
+    }
+```
 
-### `npm run build`
+- Use the Web3ReactProvider component from the react-web3 library to wrap your React app, and provide it with the web3 instance as a prop:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```js
+    <Web3ReactProvider getLibrary={getLibrary} >
+        {/* Your react app components here */}
+        <App />
+    </Web3ReactProvider>
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- You can now access your MetaMask account information by using the useWeb3React hook provided by the react-web3 library in your React components. For example, the following code will get your account number, and display it in a `<p>` element:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```js
+    import { useWeb3React } from '@web3-react/core';
 
-### `npm run eject`
+    const MyComponent = () => {
+      const { account } = useWeb3React();
+      return (
+        <p>
+          Account: {account} 
+        </p>
+      );
+    };
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Now to access your MetaMask account balance in your React components, we will use a state for that, and useEffect hook to update it. Here is the same example from the previous step:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```js
+    import { useWeb3React } from '@web3-react/core';
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    const MyComponent = () => {
+      const { account, library } = useWeb3React();
+      const [ balance , setBalance ] = useState();
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+      useEffect(()=> {
+          library?.eth.getBalance(account).then((result)=>{
+            setBalance(result)
+          })
 
-## Learn More
+      }, [ account, library ])
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+      return (
+        <p>
+          Account: {account} 
+          Balance: {balance}
+        </p>
+      );
+    };
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+That's it! With these steps, you should now have a React web app that connects to your MetaMask wallet and displays your account number and balance.
