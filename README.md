@@ -2,6 +2,12 @@
 
 This is a react web app that connects to your MetaMask wallet and displays your account number and balance, using the Web3.js and react-Web3 libraries.
 
+## demo
+
+**To try the dapp:** [**click here**](https://ahbari-m.github.io/wallet-dapp/)
+
+![pc](./demo/demo.jpg)
+
 ## general overview of the implementation steps
 
 - First, install the necessary dependencies by running the following command in your terminal:
@@ -26,7 +32,7 @@ This is a react web app that connects to your MetaMask wallet and displays your 
     }
 ```
 
-- Use the Web3ReactProvider component from the react-web3 library to wrap your React app, and provide it with the web3 instance as a prop:
+- Use the Web3ReactProvider component from the react-web3 library to wrap your React app, and provide it with the getLibrary function as a prop:
 
 ```js
     <Web3ReactProvider getLibrary={getLibrary} >
