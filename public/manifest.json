@@ -1,0 +1,6 @@
+{
+  "short_name": "Wallet App",
+  "name": "connect your metamask wallet",
+  "start_url": ".",
+  "display": "standalone"
+}

@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+  --clr-darker: #0E0F10;
+  --clr-dark: #1B1C1E;
+  --clr-light: #F6F6F6;
+  --clr-prime: #C7FF6C;
+
+  /* font-families */
+  --ff-heading: 'Poppins', sans-serif;
+  --ff-normal: 'Roboto', sans-serif;
+}
+
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  color: var(--clr-light);
+
+}
+
+/* set up the body */
+body {
+  font-family: var(--ff-normal);
+  color: var(--clr-light);
+  background: var(--clr-darker);
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  width: 100vw;
+
+}
+
+.bg-light{
+  background-color: var(--clr-light);
+}
+.bg-prime{
+  background-color: var(--clr-prime);
+}
+
+a {
+  text-decoration: none;
+}
+
+.app{
+  width: 100%;
+  margin-top: 5rem;
+
+}
+
+.container {
+  padding-inline: 2em;
+  margin-inline: auto;
+  max-width: 40rem;
+}
+
+.btn {
+  color: var(--clr-darker);
+  padding: .8rem 1.2rem;
+  align-self: center;
+  border-radius: .5rem;
+  font-weight: 600;
+  font-family: var(--ff-heading);
+  cursor: pointer;
+}
+
+.btn-secondary{
+  border: none;
+  background-color: var(--clr-dark);
+  color: var(--clr-light);
+}
+
+.connect-section {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 2rem 0 ;
+}
+
+.details{
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.dataSpace{
+  margin: 1rem 0;
+  padding: 2rem;
+  font-family: var(--ff-heading);
+  font-weight: 800;
+  font-size: xx-large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: .5rem;
+}
+.title {
+  font-weight: 400;
+  font-size: medium;
+  color: var(--clr-light);
+}
+
+.balance {
+  background-color: var(--clr-prime);
+  color: #0E0F10;
+  position: relative;
+  overflow: hidden;
+}
+
+.balance > .title {
+  color: var(--clr-darker);
+}
+
+.account {
+  font-size: medium;
+  color : var(--clr-prime);
+  border: 2px solid var(--clr-dark);
+  cursor: pointer;
+}
+
+.account:hover{
+  background-color: var(--clr-dark);
+}
+
+.copy-icon{
+  margin-inline: .5rem;
+  display: inline-block;
+  padding: 8px;
+}
+
+.copy-icon > img {
+  width: 16px;
+}
+
+.network {
+  font-size: small;
+  color: #bbbbbb;
+  text-align: end;
+}
+
+.warning{
+  color: goldenrod;
+}
+
+.eth-icon{
+  position: absolute;
+  top: 0;
+  right: -8%;
+  width: 10rem;
+  margin: 1rem 0;
+}
